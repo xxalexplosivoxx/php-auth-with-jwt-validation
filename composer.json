@@ -1,0 +1,7 @@
+{
+    "require": {
+        "pragmarx/google2fa": "^9.0",
+        "bacon/bacon-qr-code": "^2.0",
+        "firebase/php-jwt": "^7.0"
+    }
+}
