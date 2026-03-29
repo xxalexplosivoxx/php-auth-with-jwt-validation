@@ -5,8 +5,9 @@ API PHP con autenticación OTP + JWT, acceso seguro a MariaDB y CRUD para docent
 ## Configuración segura
 
 1. Crea un archivo `.env` tomando como base `.env.example`.
-2. Define valores seguros para `DB_PASS`, `MYSQL_ROOT_PASSWORD` y `JWT_SECRET`.
-3. Inicia el entorno:
+2. Instala las dependencias de PHP con `composer install`
+3. Define valores seguros para `DB_PASS`, `MYSQL_ROOT_PASSWORD` y `JWT_SECRET` .
+4. Inicia el entorno:
 
 ```bash
 docker compose up --build
