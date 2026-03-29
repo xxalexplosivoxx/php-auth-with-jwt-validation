@@ -1,14 +1,12 @@
-version: '3.8'
-
 services:
   db:
     image: mariadb:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: escuela
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: mititluloselollevoexpedition33
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-change_root_password}
+      MYSQL_DATABASE: ${DB_NAME:-escuela}
+      MYSQL_USER: ${DB_USER:-docker}
+      MYSQL_PASSWORD: ${DB_PASS:-change_db_password}
     volumes:
       - db_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
@@ -18,10 +16,13 @@ services:
     ports:
       - "8080:80"
     environment:
-      - DB_HOST=db
-      - DB_NAME=escuela
-      - DB_USER=docker
-      - DB_PASS=mititluloselollevoexpedition33
+      - DB_HOST=${DB_HOST:-db}
+      - DB_NAME=${DB_NAME:-escuela}
+      - DB_USER=${DB_USER:-docker}
+      - DB_PASS=${DB_PASS:-change_db_password}
+      - JWT_SECRET=${JWT_SECRET:-change_this_jwt_secret}
+      - JWT_TTL=${JWT_TTL:-3600}
+      - APP_ALLOWED_ORIGINS=${APP_ALLOWED_ORIGINS:-http://localhost,http://127.0.0.1,http://localhost:8080}
     depends_on:
       - db
 
